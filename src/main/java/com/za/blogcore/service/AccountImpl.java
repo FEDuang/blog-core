@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountImpl implements IAccountService{
 
-    private final AccountMapper accountMapper;
-
     @Autowired
-    public AccountImpl(AccountMapper accountMapper) {
-        this.accountMapper = accountMapper;
-    }
+    private AccountMapper accountMapper;
+
+//    @Autowired
+//    public AccountImpl(AccountMapper accountMapper) {
+//        this.accountMapper = accountMapper;
+//    }
 
     @Override
     public Account login(String UserName, String Password) {

@@ -6,6 +6,10 @@ spring:
     show-sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://8.129.224.87:3306/starry_blog?useSSL=false&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://100.101.16.224:3306/za_blog?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
-    password: DarkNess15
+    password: 5137
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.za.blogcore.entity

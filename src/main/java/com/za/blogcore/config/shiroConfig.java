@@ -8,7 +8,6 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authc.pam.FirstSuccessfulStrategy;
 import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -108,11 +107,7 @@ public class shiroConfig {
         //有很多策略，这里采取 FirstSuccessfulStrategy
         modularRealmAuthenticator.setAuthenticationStrategy(new FirstSuccessfulStrategy());
         securityManager.setAuthenticator(modularRealmAuthenticator);
-        List<Realm> realms = new ArrayList<>();
-        //可添加新realm
-        realms.add(myShiroRealm());
-        //原本是setRealm，现在是setRealms
-        securityManager.setRealms(realms);
+        securityManager.setRealm(myShiroRealm());
         securityManager.setRememberMeManager(rememberMeManager());
         securityManager.setSessionManager(getDefaultWebSessionManager());
         return securityManager;
@@ -137,6 +132,7 @@ public class shiroConfig {
         String admin = "roles[admin]";
         //login
         map.put("/account/login", "anon");
+        map.put("/account/logout", "anon");
 
         //其余端口登录后才可以访问(user级别)
 //        map.put("/**", "authc");

@@ -2,9 +2,13 @@ package com.za.blogcore.dao;
 
 import com.za.blogcore.entity.URTable;
 import com.za.blogcore.entity.examples.URTableExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface URTableMapper {
     long countByExample(URTableExample example);
 

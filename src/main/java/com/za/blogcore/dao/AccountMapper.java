@@ -2,6 +2,7 @@ package com.za.blogcore.dao;
 
 import com.za.blogcore.entity.Account;
 import com.za.blogcore.entity.examples.AccountExample;
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;

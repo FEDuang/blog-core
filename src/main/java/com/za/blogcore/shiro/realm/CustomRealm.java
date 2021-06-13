@@ -27,6 +27,7 @@ public class CustomRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+        System.out.println("doGetAuthorizationInfo");
         Subject subject = SecurityUtils.getSubject();
         //如果没登陆，直接就是0身份
         Set<String> roles = (Set<String>) subject.getSession().getAttribute("roles");
@@ -62,8 +63,9 @@ public class CustomRealm extends AuthorizingRealm {
         //防止传递密码
         Subject subject = SecurityUtils.getSubject();
         String password = account.getPassword();
+        System.out.println("account: " + account);
         account.setPassword(null);
-        subject.getSession().setAttribute("user",account);
+        subject.getSession().setAttribute("user", account);
         //仅允许单用户登录
 //        SessionDAO sessionDAO = ((DefaultSessionManager) ((DefaultSecurityManager) SecurityUtils
 //                .getSecurityManager()).getSessionManager()).getSessionDAO();
@@ -78,7 +80,7 @@ public class CustomRealm extends AuthorizingRealm {
         //2). credentials: 密码.
         //3). realmName: 当前 realm 对象的 name. 调用父类的 getName() 方法即可
         //4). 采用用户名来生成盐(也可以采用 用户名+特定盐 来生成盐)使用盐值后,即使多个用户原始密码相同，它们存在数据库内结果也不同
-        ByteSource credentialsSalt = ByteSource.Util.bytes(username+ Const.SALT);
+        ByteSource credentialsSalt = ByteSource.Util.bytes(username + Const.SALT);
         //下面这个类会验证token中用户输入和数据库存的密码是否相同
         //第二个参数请填写正确的密码
         return new SimpleAuthenticationInfo(account.getUsername(), password, credentialsSalt, this.getName());

@@ -20,15 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "account")
 public class AccountController {
 
+    @Autowired
     IAccountService accountService;
 
-    @Autowired
-    public AccountController(IAccountService accountService) {
-        this.accountService = accountService;
-    }
+//    @Autowired
+//    public AccountController(IAccountService accountService) {
+//        this.accountService = accountService;
+//    }
 
     @PostMapping("login")
     public Object login(String username, String password) {
+        System.out.println(username + " @ " + password);
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
         if (subject.isAuthenticated()) {
@@ -40,7 +42,6 @@ public class AccountController {
         } catch (AuthenticationException e) {
             return ServerResponse.Error("账号或密码错误");
         }
-
         Account account = (Account) session.getAttribute("user");
 
         return ServerResponse.Success("登陆成功", account);
