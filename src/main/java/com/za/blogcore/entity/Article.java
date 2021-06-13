@@ -3,16 +3,24 @@ package com.za.blogcore.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
+import java.util.Date;
+import java.util.List;
 
 @Getter
 @ToString
 @Setter
 public class Article {
+    private Long articleId;
 
-    private Long postId;
+    private String articleTitle;
 
-    private String postTitle;
+    private String articleMarkdown;
 
-    private String postContent;
+    private String articleThumbnail;
+
+    private List<String> articleTags;
+
+    private Date createdTime;
+    
+    private Date editedTime;
 }
