@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.za.blogcore.dao.URTableMapper">
-  <resultMap id="BaseResultMap" type="com.za.blogcore.entity.URTable">
+<mapper namespace="org.za.blog.dao.URTableMapper">
+  <resultMap id="BaseResultMap" type="org.za.blog.entity.URTable">
     <id column="urid" jdbcType="INTEGER" property="urid" />
     <result column="rid" jdbcType="VARCHAR" property="rid" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     urid, rid, uid
   </sql>
-  <select id="selectByExample" parameterType="com.za.blogcore.entity.examples.URTableExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.za.blog.entity.examples.URTableExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from urtable
     where urid = #{urid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.za.blogcore.entity.examples.URTableExample">
+  <delete id="deleteByExample" parameterType="org.za.blog.entity.examples.URTableExample">
     delete from urtable
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.za.blogcore.entity.URTable">
+  <insert id="insert" parameterType="org.za.blog.entity.URTable">
     insert into urtable (urid, rid, uid
       )
     values (#{urid,jdbcType=INTEGER}, #{rid,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.za.blogcore.entity.URTable">
+  <insert id="insertSelective" parameterType="org.za.blog.entity.URTable">
     insert into urtable
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="urid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.za.blogcore.entity.examples.URTableExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="org.za.blog.entity.examples.URTableExample" resultType="java.lang.Long">
     select count(*) from urtable
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.za.blogcore.entity.URTable">
+  <update id="updateByPrimaryKeySelective" parameterType="org.za.blog.entity.URTable">
     update urtable
     <set>
       <if test="rid != null">
@@ -172,7 +172,7 @@
     </set>
     where urid = #{urid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.za.blogcore.entity.URTable">
+  <update id="updateByPrimaryKey" parameterType="org.za.blog.entity.URTable">
     update urtable
     set rid = #{rid,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER}
