@@ -8,31 +8,16 @@ import org.apache.logging.log4j.MarkerManager;
  */
 public class Const {
 
-    public static final String CURRENT_USER = "username";
+    //    ------------------------ shiro begin ------------------------
+    public static final String ALGORITHM_NAME = "sha-256"; // shiro密码加密算法
+    public static final int HashIterations = 2; // shiro进行密码加密的次数
+    public static final String SALT = "za102nb"; // 盐
+    public static final String KEYSTR = "知行102";
+    //    ------------------------  shiro end  ------------------------
 
-    /*log4j2标记，所有由我们自己发出的日志都会持有此标记*/
-    public static final Marker LOG_MARKER = new MarkerManager.Log4jMarker("starryio");
+    //    ------------------------ shiro begin ------------------------
+    public static final String DOCUMENT_ARTICLE = "article"; // shiro密码加密算法
+    //    ------------------------  shiro end  ------------------------
 
-    /*shiro密码加密算法*/
-    public static final String ALGORITHM_NAME = "sha-256";
-
-    /*shiro进行密码加密的次数*/
-    public static final int HashIterations = 2;
-
-    public static final String SALT="za102nb";
-
-    public static final String KEYSTR="知行102";
-
-//    public static String getCurrentUsername(){
-//        Subject subject = SecurityUtils.getSubject();
-//        return (String) subject.getSession().getAttribute(CURRENT_USER);
-//    }
-//
-//    public static char[] encodePassword(String salt, char[] password){
-//        ByteSource credentialsSalt = ByteSource.Util.bytes(salt);
-//        SimpleHash encodedPassword = new SimpleHash(
-//                Const.ALGORITHM_NAME, password, credentialsSalt, Const.HashIterations);
-//        return encodedPassword.toString().toCharArray();
-//    }
 
 }

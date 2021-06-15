@@ -42,15 +42,11 @@
 
         <!-- table指定每个表的生成策略 -->
         <!--        <table tableName="account" domainObjectName="Account"/>-->
-        <table tableName="urtable" domainObjectName="URTable" />
-        <!--		<table tableName="classes" domainObjectName="Classes" ></table>-->
-        <!--		<table tableName="uctable" domainObjectName="UCTable" ></table>-->
-        <!--		<table tableName="yesnoquestion" domainObjectName="YesNoQuestion" ></table>-->
-        <!--		<table tableName="matchquestion" domainObjectName="MatchQuestion" ></table>-->
+        <!--        <table tableName="urtable" domainObjectName="URTable" />-->
+        <table tableName="ArticleTag" domainObjectName="ArticleTag" />
         <!--		<table tableName="ectable" domainObjectName="ECTable" ></table>-->
         <!--		<table tableName="exam" domainObjectName="Exam" />-->
         <!--		<table tableName="score" domainObjectName="Score" />-->
-        <!--&lt;!&ndash;		<table tableName="role" domainObjectName="role"></table>&ndash;&gt;-->
         <!--			<columnOverride column="descript" javaType="java.lang.String" jdbcType="VARCHAR" />-->
         <!--		</table>-->
         <!--		<table tableName="MatchQuestion" domainObjectName="MatchQuestion" />-->

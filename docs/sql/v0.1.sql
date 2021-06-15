@@ -8,20 +8,15 @@ CREATE TABLE account(
                         username VARCHAR(32) NOT NULL,
                         password VARCHAR(64) NOT NULL,
                         created_time DATETIME
-) DEFAULT CHARSET = utf8;
+) ;
 
 DROP table if EXISTS urtable;
 CREATE TABLE urtable(
                         urid INTEGER PRIMARY KEY AUTO_INCREMENT,
                         rid VARCHAR(16) NOT NULL,
                         uid INTEGER NOT NULL
-) DEFAULT CHARSET = utf8;
+);
 
-DROP table if EXISTS article_tag;
-CREATE TABLE article_tag(
-                            tag_id INTEGER PRIMARY KEY,
-                            tag_name VARCHAR(32) NOT NULL
-) DEFAULT CHARSET = utf8;
 DROP table if EXISTS article;
 CREATE TABLE article(
                         article_id INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -29,7 +24,14 @@ CREATE TABLE article(
                         article_created_time DATE NOT NULL,
                         article_title VARCHAR(64) NOT NULL,
                         article_thumbnail VARCHAR(64) NOT NULL
-) DEFAULT CHARSET = utf8;
+) ;
+
+DROP table if EXISTS Article_Tag;
+CREATE TABLE Article_Tag(
+                            tag_id INTEGER PRIMARY KEY,
+                            tag_name VARCHAR(32) NOT NULL
+) ;
+
 DROP table if EXISTS article_tag_group;
 CREATE TABLE article_tag_group(
                                   id INTEGER PRIMARY KEY AUTO_INCREMENT,

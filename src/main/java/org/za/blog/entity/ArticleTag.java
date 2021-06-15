@@ -1,14 +1,26 @@
 package org.za.blog.entity;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
-@Getter
 @ToString
-@Setter
 public class ArticleTag {
+    private Integer tagId;
 
-    private Long tagId;
+    private String tagName;
 
+    public Integer getTagId() {
+        return tagId;
+    }
+
+    public void setTagId(Integer tagId) {
+        this.tagId = tagId;
+    }
+
+    public String getTagName() {
+        return tagName;
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName == null ? null : tagName.trim();
+    }
 }
