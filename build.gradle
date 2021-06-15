@@ -1,12 +1,25 @@
+buildscript {
+    repositories {
+        maven {  url "https://plugins.gradle.org/m2/"    }
+    }
+
+    dependencies {
+        classpath 'gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.20.0'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.3.1.RELEASE"
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.5.0'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
 
-group = 'com.za'
+group = 'org.za'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+apply plugin: 'com.palantir.docker'
 
 configurations {
     compileOnly {
@@ -15,6 +28,9 @@ configurations {
 }
 
 repositories {
+    maven { url "https://plugins.gradle.org/m2/" }
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/nexus/' }
     mavenCentral()
 }
 
@@ -53,4 +69,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+docker {
+//    dependsOn build
+    name "${group}/${bootJar.archiveBaseName}"
+    files bootJar.archiveFile
+    buildArgs(['JAR_FILE': "${bootJar.archiveFileName}"])
+//    定义供Dockerfile使用的变量 JAR_FILE
 }
