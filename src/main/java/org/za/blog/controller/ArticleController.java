@@ -17,8 +17,8 @@ public class ArticleController {
      * @param articleId
      * @return
      */
-    @PostMapping("queryArticle")
-    public Object queryArticle(@NotNull String articleId){
+    @PostMapping("getArticle")
+    public Object getArticle(@NotNull String articleId){
 
         return ServerResponse.Success();
     }
@@ -52,7 +52,6 @@ public class ArticleController {
      */
     @PostMapping("editArticle")
     public Object editArticle(@NotNull String articleId){
-
         return ServerResponse.Success();
     }
 

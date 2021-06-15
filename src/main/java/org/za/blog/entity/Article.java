@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.za.blog.consts.Const;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 //@ToString
 //@Setter
 @Document(Const.DOCUMENT_ARTICLE)
-public class Article {
+public class Article implements Serializable {
     @Id
     private String articleId;
     @Field
