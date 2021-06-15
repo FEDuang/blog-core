@@ -10,8 +10,9 @@ public interface IBaseDao<T> {
      * 保存实体,执行完成本方法后，所引用实体的主键id会自动赋上值
      *
      * @param entity 要保存的实体
+     * @return
      */
-    void save(T entity);
+    T save(T entity);
 
     /**
      * 更新多个值，相当于 set newKey=newValue where key=value

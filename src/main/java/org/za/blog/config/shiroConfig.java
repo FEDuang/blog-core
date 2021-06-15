@@ -135,8 +135,8 @@ public class shiroConfig {
         map.put("/account/logout", "anon");
 
         //其余端口登录后才可以访问(user级别)
-//        map.put("/**", "authc");
-        map.put("/**", admin);
+        map.put("/**", "anon");
+//        map.put("/**", admin);
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         return shiroFilterFactoryBean;
     }

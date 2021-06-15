@@ -11,7 +11,7 @@ import org.za.blog.service.IArticleService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "account")
+@RequestMapping(value = "article")
 public class ArticleController {
     private final IArticleService articleService;
 

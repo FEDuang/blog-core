@@ -6,11 +6,7 @@ spring:
     password: 5137
   data:
     mongodb:
-      database: za_blog
-      username: root
-      password: 5137
-      port: 27017
-      host: 100.101.16.224
+      uri: mongodb://root:5137@100.101.16.224:27017/za_blog?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false
 
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
