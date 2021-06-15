@@ -4,6 +4,13 @@ spring:
     url: jdbc:mysql://100.101.16.224:3306/za_blog?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
     password: 5137
+  data:
+    mongodb:
+      database: za_blog
+      username: root
+      password: 5137
+      port: 27017
+      host: 100.101.16.224
 
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml

@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven {  url "https://plugins.gradle.org/m2/"    }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
@@ -64,6 +64,10 @@ dependencies {
 //    lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+//    hutool
+    // https://mvnrepository.com/artifact/cn.hutool/hutool-all
+    implementation group: 'cn.hutool', name: 'hutool-all', version: '5.6.7'
+
 
 }
 

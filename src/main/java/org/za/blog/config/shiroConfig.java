@@ -75,7 +75,7 @@ public class shiroConfig {
         // cookieRememberMeManager.setCipherKey用来设置加密的Key,参数类型byte[],字节数组长度要求16
         // 往深几层看源码,采用16位的数组最后会返回128位的值,而shiro默认使用128位。所以除非你改了，否则传入要求长度16
         //原串
-        byte[] keys=Const.KEYSTR.getBytes(StandardCharsets.UTF_8);
+        byte[] keys=Const.KEYSTRING.getBytes(StandardCharsets.UTF_8);
         //加密.因为秘钥是硬编码,泄露就有可能导致反序列化漏洞.一定要自己生成或者使用官方秘钥方法生成秘钥
         String encode = Base64Utils.encodeToString(Arrays.copyOf(keys, 16));
         //使用官方秘钥方法生成秘钥也可以。千万不要去网上找！否则反序列化漏洞会导致黑客执行任意代码

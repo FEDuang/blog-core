@@ -7,6 +7,6 @@ import java.util.List;
 public interface IArticleService {
     Article GetArticle(String articleId);
     List<Article> GetArticles(int limit, int page);
-    Article SaveArticle(Article article);
-    int DeleteArticle(String[] articleIds);
+    String SaveArticle(Article article, String context);
+    boolean DeleteArticle(String articleIds);
 }

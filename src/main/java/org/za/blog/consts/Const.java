@@ -12,12 +12,12 @@ public class Const {
     public static final String ALGORITHM_NAME = "sha-256"; // shiro密码加密算法
     public static final int HashIterations = 2; // shiro进行密码加密的次数
     public static final String SALT = "za102nb"; // 盐
-    public static final String KEYSTR = "知行102";
+    public static final String KEYSTRING = "知行102";
     //    ------------------------  shiro end  ------------------------
 
-    //    ------------------------ shiro begin ------------------------
+    //    ------------------------ entity begin ------------------------
     public static final String DOCUMENT_ARTICLE = "article"; // shiro密码加密算法
-    //    ------------------------  shiro end  ------------------------
+    //    ------------------------  entity end  ------------------------
 
 
 }

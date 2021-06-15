@@ -14,7 +14,6 @@ import java.util.Objects;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
-@Component
 public abstract class BaseDaoImpl<T> implements IBaseDao<T> {
     protected abstract Class<T> getEntityClass();
 
