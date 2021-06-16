@@ -40,8 +40,7 @@ public class ArticleController {
      */
     @PostMapping("listArticle")
     public Object listArticle(int limit, int page) {
-
-        return ServerResponse.Success();
+        return ServerResponse.Success(articleService.GetArticles(limit, page));
     }
 
     /**

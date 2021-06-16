@@ -1,12 +1,13 @@
 package org.za.blog.service;
 
 import org.za.blog.entity.Article;
+import org.za.blog.utils.PageResult;
 
 import java.util.List;
 
 public interface IArticleService {
     Article GetArticle(String articleId);
-    List<Article> GetArticles(int limit, int page);
+    PageResult<Article> GetArticles(int limit, int page);
     String SaveArticle(Article article, String context);
 
     /**

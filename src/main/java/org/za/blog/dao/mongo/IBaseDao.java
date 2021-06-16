@@ -1,5 +1,7 @@
 package org.za.blog.dao.mongo;
 
+import org.za.blog.utils.PageResult;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -116,6 +118,8 @@ public interface IBaseDao<T> {
      * @return 结果
      */
     List<T> findByProps(Map<String, Object> prop);
+
+    PageResult<T> findByPage(Integer pageNum, Integer pageSize);
 
 }
 

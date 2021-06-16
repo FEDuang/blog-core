@@ -11,6 +11,7 @@ import org.za.blog.consts.Const;
 import org.za.blog.dao.mongo.IArticleDao;
 import org.za.blog.entity.Article;
 import org.za.blog.service.IArticleService;
+import org.za.blog.utils.PageResult;
 
 import java.io.File;
 import java.util.List;
@@ -30,8 +31,8 @@ public class ArticleImpl implements IArticleService {
     }
 
     @Override
-    public List<Article> GetArticles(int limit, int page) {
-        return null;
+    public PageResult<Article> GetArticles(int limit, int page) {
+        return articleDao.findByPage(page, limit);
     }
 
     @Override
