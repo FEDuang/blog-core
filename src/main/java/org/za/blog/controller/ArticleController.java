@@ -1,11 +1,10 @@
 package org.za.blog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.za.blog.consts.ServerResponse;
+import org.za.blog.dto.ListArticleParam;
+import org.za.blog.dto.SaveArticleParam;
 import org.za.blog.entity.Article;
 import org.za.blog.service.IArticleService;
 
@@ -27,32 +26,34 @@ public class ArticleController {
      * @return
      */
     @PostMapping("getArticle")
-    public Object getArticle(String articleId) {
+    public Object getArticle(@RequestBody String articleId) {
         return ServerResponse.Success(articleService.GetArticle(articleId));
     }
 
     /**
      * 分页查询多个文章的属性
      *
-     * @param pageSize 每页数量
-     * @param pageNum  页数
+     * @param listArticleParam
      * @return 文章列表
      */
     @PostMapping("listArticle")
-    public Object listArticle(int pageSize, int pageNum) {
-        return ServerResponse.Success(articleService.GetArticles(pageSize, pageNum));
+    public Object listArticle(@RequestBody ListArticleParam listArticleParam) {
+        return ServerResponse.Success(articleService.GetArticles(listArticleParam.getPageSize(), listArticleParam.getPageNum()));
     }
 
     /**
      * 保存一个文章，包括新建和编辑
      *
-     * @param article
-     * @param context
+     * @param saveArticleParam
      * @return
      */
     @PostMapping("saveArticle")
-    public Object saveArticle(Article article, String context) {
-        String path = articleService.SaveArticle(article, context);
+    public Object saveArticle(@RequestBody SaveArticleParam saveArticleParam) {
+        Article article = new Article();
+        article.setArticleTitle(saveArticleParam.getArticleTitle());
+        article.setArticlePreview(saveArticleParam.getArticlePreview());
+
+        String path = articleService.SaveArticle(article, saveArticleParam.getContext());
         if (path.length() > 0)
             return ServerResponse.Success(path);
         return ServerResponse.Error();
@@ -65,7 +66,7 @@ public class ArticleController {
      * @return
      */
     @PostMapping("deleteArticle")
-    public Object deleteArticle(String articleId) {
+    public Object deleteArticle(@RequestBody String articleId) {
         return ServerResponse.Create(articleService.DeleteArticle(articleId));
     }
 }

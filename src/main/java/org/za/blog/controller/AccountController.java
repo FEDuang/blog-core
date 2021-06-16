@@ -1,6 +1,8 @@
 package org.za.blog.controller;
 
+import org.springframework.web.bind.annotation.*;
 import org.za.blog.consts.ServerResponse;
+import org.za.blog.dto.LoginParam;
 import org.za.blog.entity.Account;
 import org.za.blog.service.IAccountService;
 import org.apache.shiro.SecurityUtils;
@@ -9,10 +11,6 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @CrossOrigin
@@ -28,14 +26,14 @@ public class AccountController {
     }
 
     @PostMapping("login")
-    public Object login(String username, String password) {
-        System.out.println(username + " @ " + password);
+    public Object login(@RequestBody LoginParam loginParam) {
+        System.out.println(loginParam.getUsername() + " @ " + loginParam.getPassword());
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
         if (subject.isAuthenticated()) {
             return ServerResponse.Success("您已经登陆过了", session.getAttribute("user"));
         }
-        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password);
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(loginParam.getUsername(), loginParam.getPassword());
         try {
             subject.login(usernamePasswordToken);
         } catch (AuthenticationException e) {

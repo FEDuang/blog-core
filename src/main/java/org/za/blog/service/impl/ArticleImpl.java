@@ -14,6 +14,7 @@ import org.za.blog.service.IArticleService;
 import org.za.blog.utils.PageResult;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,6 +42,9 @@ public class ArticleImpl implements IArticleService {
             return "";
         }
         article.setArticleId(new ObjectId().toString());
+        article.setCreatedTime(new Date());
+        article.setEditedTime(new Date());
+        article.setClickCount(0);
         String fileName = getFileName(article.getArticleId());
         try {
             if (!FileUtil.exist(fileName)) {
