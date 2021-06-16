@@ -34,13 +34,13 @@ public class ArticleController {
     /**
      * 分页查询多个文章的属性
      *
-     * @param limit 每页数量
-     * @param page  页数
+     * @param pageSize 每页数量
+     * @param pageNum  页数
      * @return 文章列表
      */
     @PostMapping("listArticle")
-    public Object listArticle(int limit, int page) {
-        return ServerResponse.Success(articleService.GetArticles(limit, page));
+    public Object listArticle(int pageSize, int pageNum) {
+        return ServerResponse.Success(articleService.GetArticles(pageSize, pageNum));
     }
 
     /**

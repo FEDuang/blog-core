@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IArticleService {
     Article GetArticle(String articleId);
-    PageResult<Article> GetArticles(int limit, int page);
+    PageResult<Article> GetArticles(int pageSize, int pageNum);
     String SaveArticle(Article article, String context);
 
     /**
