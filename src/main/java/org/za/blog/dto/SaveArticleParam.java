@@ -1,9 +1,14 @@
 package org.za.blog.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Setter
+@Getter
+@ToString
 public class SaveArticleParam {
+    private String articleID;
     private String articleTitle;
     private String articlePreview;
     private String context;

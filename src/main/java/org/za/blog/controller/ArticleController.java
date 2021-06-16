@@ -41,15 +41,44 @@ public class ArticleController {
         return ServerResponse.Success(articleService.GetArticles(listArticleParam.getPageSize(), listArticleParam.getPageNum()));
     }
 
+//    /**
+//     * 查询一个文章的内容(md文件)
+//     *
+//     * @param articleId
+//     * @return
+//     */
+//    @PostMapping("getArticleDetail")
+//    public Object getArticleDetail(String articleId) {
+//        return ServerResponse.Success(articleService.GetArticle(articleId));
+//    }
+
     /**
-     * 保存一个文章，包括新建和编辑
+     * 新建一个文章
      *
      * @param saveArticleParam
      * @return
      */
-    @PostMapping("saveArticle")
-    public Object saveArticle(@RequestBody SaveArticleParam saveArticleParam) {
+    @PostMapping("addArticle")
+    public Object addArticle(@RequestBody SaveArticleParam saveArticleParam) {
         Article article = new Article();
+        article.setArticleTitle(saveArticleParam.getArticleTitle());
+        article.setArticlePreview(saveArticleParam.getArticlePreview());
+
+        String path = articleService.SaveArticle(article, saveArticleParam.getContext());
+        if (path.length() > 0)
+            return ServerResponse.Success(path);
+        return ServerResponse.Error();
+    }
+
+    /**
+     * 编辑一个文章
+     *
+     * @param saveArticleParam
+     * @return
+     */
+    @PostMapping("editArticle")
+    public Object editArticle(@RequestBody SaveArticleParam saveArticleParam) {
+        Article article = articleService.GetArticle(saveArticleParam.getArticleID());
         article.setArticleTitle(saveArticleParam.getArticleTitle());
         article.setArticlePreview(saveArticleParam.getArticlePreview());
 

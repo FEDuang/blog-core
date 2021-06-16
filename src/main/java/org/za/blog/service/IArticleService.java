@@ -10,6 +10,7 @@ public interface IArticleService {
     PageResult<Article> GetArticles(int pageSize, int pageNum);
     String SaveArticle(Article article, String context);
 
+
     /**
      * 删除文章
      * @param articleIds

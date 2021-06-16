@@ -41,10 +41,12 @@ public class ArticleImpl implements IArticleService {
         if (ObjectUtils.isEmpty(article)) {
             return "";
         }
-        article.setArticleId(new ObjectId().toString());
+        if (ObjectUtils.isEmpty(article.getArticleId())){
+            article.setArticleId(new ObjectId().toString());
+        }
         article.setCreatedTime(new Date());
         article.setEditedTime(new Date());
-        article.setClickCount(0);
+        article.setClickCount(ObjectUtils.isEmpty(article.getClickCount())?0:article.getClickCount());
         String fileName = getFileName(article.getArticleId());
         try {
             if (!FileUtil.exist(fileName)) {
