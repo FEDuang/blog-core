@@ -16,7 +16,9 @@ public class Const {
     //    ------------------------  shiro end  ------------------------
 
     //    ------------------------ entity begin ------------------------
-    public static final String DOCUMENT_ARTICLE = "article"; // shiro密码加密算法
+    public static final String DOCUMENT_ARTICLE = "article"; // MongoDB表名
+    public static final String ARTICLE_FILENAME = "/article.md"; // md文件名
+    public static final String ARTICLE_FILEPATH = "./article/"; // md文件路径
     //    ------------------------  entity end  ------------------------
 
 

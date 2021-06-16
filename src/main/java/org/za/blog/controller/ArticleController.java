@@ -53,7 +53,10 @@ public class ArticleController {
      */
     @PostMapping("saveArticle")
     public Object saveArticle(Article article, String context) {
-        return ServerResponse.Success(articleService.SaveArticle(article, context));
+        String path = articleService.SaveArticle(article, context);
+        if (path.length() > 0)
+            return ServerResponse.Success(path);
+        return ServerResponse.Error();
     }
 
     /**
@@ -64,6 +67,6 @@ public class ArticleController {
      */
     @PostMapping("deleteArticle")
     public Object deleteArticle(String articleId) {
-        return ServerResponse.create(articleService.DeleteArticle(articleId));
+        return ServerResponse.Create(articleService.DeleteArticle(articleId));
     }
 }

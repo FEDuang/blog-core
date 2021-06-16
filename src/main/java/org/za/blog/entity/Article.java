@@ -24,8 +24,6 @@ public class Article implements Serializable {
     @Field
     private String articlePreview;
     @Field
-    private String articlePath;
-    @Field
     private String articlePhotoPath;
     @Field
     private List<Integer> articleTags;
@@ -58,14 +56,6 @@ public class Article implements Serializable {
 
     public void setArticlePreview(String articlePreview) {
         this.articlePreview = articlePreview;
-    }
-
-    public String getArticlePath() {
-        return articlePath;
-    }
-
-    public void setArticlePath(String articlePath) {
-        this.articlePath = articlePath;
     }
 
     public String getArticlePhotoPath() {
@@ -114,7 +104,6 @@ public class Article implements Serializable {
                 "articleId=" + articleId +
                 ", articleTitle='" + articleTitle + '\'' +
                 ", articlePreview='" + articlePreview + '\'' +
-                ", articlePath='" + articlePath + '\'' +
                 ", articlePhotoPath='" + articlePhotoPath + '\'' +
                 ", articleTags=" + articleTags +
                 ", clickCount=" + clickCount +

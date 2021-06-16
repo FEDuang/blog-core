@@ -1,9 +1,13 @@
 package org.za.blog.service.impl;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.IORuntimeException;
 import cn.hutool.core.io.file.FileWriter;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.za.blog.consts.Const;
 import org.za.blog.dao.mongo.IArticleDao;
 import org.za.blog.entity.Article;
 import org.za.blog.service.IArticleService;
@@ -32,24 +36,43 @@ public class ArticleImpl implements IArticleService {
 
     @Override
     public String SaveArticle(Article article, String context) {
-//        FileUtil.
-        Article saved = articleDao.save(article);
-        System.out.println("saved: " + saved);
-        String fileName = "../../../../../../article/" + saved.getArticleId() + "/article.md";
-        FileWriter fileWriter = new FileWriter(new File(fileName));
-        fileWriter.write(context);
-
+        if (ObjectUtils.isEmpty(article)) {
+            return "";
+        }
+        article.setArticleId(new ObjectId().toString());
+        String fileName = getFileName(article.getArticleId());
+        try {
+            if (!FileUtil.exist(fileName)) {
+                FileUtil.touch(fileName);
+            }
+            FileWriter fileWriter = new FileWriter(new File(fileName));
+            fileWriter.write(context);
+        } catch (IORuntimeException e) {
+            e.printStackTrace();
+            //回滚，删除创建的空文件
+            if (FileUtil.exist(fileName)) {
+                FileUtil.del(fileName);
+            }
+            return "";
+        }
+        articleDao.save(article);
         return fileName;
     }
 
     @Override
-    public boolean DeleteArticle(String articleIds) {
-        String fileName = "../../../../../../article/" + articleIds + "/article.md";
-        File file = new File(fileName);
-        if (file.delete()) {
-            articleDao.delete(articleIds);
-            return true;
+    public boolean DeleteArticle(String articleId) {
+        String fileName = getFileName(articleId);
+        if (FileUtil.exist(fileName)) {
+            File file = new File(fileName);
+            if (file.delete() && new File(file.getParent()).delete()) {
+                articleDao.delete(articleId);
+                return true;
+            }
         }
         return false;
+    }
+
+    private String getFileName(String ObjectId) {
+        return Const.ARTICLE_FILEPATH + ObjectId + Const.ARTICLE_FILENAME;
     }
 }

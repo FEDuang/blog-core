@@ -28,13 +28,13 @@ public class ServerResponse implements Serializable {
         this.data = data;
     }
 
-    public static  ServerResponse create(boolean isOk){
+    public static  ServerResponse Create(boolean isOk){
         return new ServerResponse((isOk?ResponseCode.success.getCode():ResponseCode.e555.getCode()),null);
     }
-    public static  ServerResponse create(boolean isOk, String msg){
+    public static  ServerResponse Create(boolean isOk, String msg){
         return new ServerResponse((isOk?ResponseCode.success.getCode():ResponseCode.e555.getCode()),msg);
     }
-    public static  ServerResponse create(boolean isOk, String msg, Object data){
+    public static  ServerResponse Create(boolean isOk, String msg, Object data){
         return new ServerResponse((isOk?ResponseCode.success.getCode():ResponseCode.e555.getCode()),msg,data);
     }
 
