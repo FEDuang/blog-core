@@ -1,8 +1,5 @@
 package org.za.blog.consts;
 
-import org.apache.logging.log4j.Marker;
-import org.apache.logging.log4j.MarkerManager;
-
 /**
  * 全局静态常量类
  */

@@ -1,4 +1,4 @@
-package org.za.blog.dto;
+package org.za.blog.entity.dto;
 
 import lombok.Data;
 

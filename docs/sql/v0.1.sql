@@ -26,10 +26,10 @@ CREATE TABLE article(
                         article_thumbnail VARCHAR(64) NOT NULL
 ) ;
 
-DROP table if EXISTS Article_Tag;
-CREATE TABLE Article_Tag(
-                            tag_id INTEGER PRIMARY KEY,
-                            tag_name VARCHAR(32) NOT NULL
+DROP table if EXISTS ArticleTag;
+CREATE TABLE ArticleTag(
+                           tag_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                           tag_name VARCHAR(32) NOT NULL
 ) ;
 
 DROP table if EXISTS article_tag_group;
@@ -49,7 +49,7 @@ INSERT INTO `account`(
 )
 VALUES(
           'admin',
-          '9b4fbcb863ea0e679a4aab9103e7380bf3e57f8159b16bea74966517ccc3c8ed',
+          '9652db973cb687482dc069124ef78b505ea4aac0108c3fff606e317588401e71',
           '2021-06-12'
       );
 
@@ -60,7 +60,7 @@ INSERT INTO `account`(
 )
 VALUES(
           'root',
-          '9f35824e5f762b9eac1e1ff369da3832b0d6e44f0c1369908254ac100a8cee4e',
+          '643a936718fc9b2d3de7dbbf31e2024d5b06d565d299c9a34e42bc57e1425284',
           '2021-06-12'
       );
 

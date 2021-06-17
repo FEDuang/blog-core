@@ -2,7 +2,7 @@ package org.za.blog.controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.za.blog.consts.ServerResponse;
-import org.za.blog.dto.LoginParam;
+import org.za.blog.entity.dto.LoginParam;
 import org.za.blog.entity.Account;
 import org.za.blog.service.IAccountService;
 import org.apache.shiro.SecurityUtils;
