@@ -8,22 +8,24 @@ za102博客后台，使用Java构建。
 
 ## 最后更新
 
-日期：2021年6月14日
+日期：2021年6月16日
 
 主版本号： 0.1
 
-内部版本号： 0020
+内部版本号： 30
 
 ## **Changelog**
 
-- v0.1.0020
+- v0.1.30.Final
+  - 可以对文章进行增删改查
+- v0.1.20
   - 可以正常登录
-- v0.1.0010
+- v0.1.10
   - 引入shiro
-- v0.1.0000
+- v0.1.00
   - 初始化项目
 
-# Getting Started
+## Getting Started
 
 ### Reference Documentation
 
@@ -50,7 +52,7 @@ These additional references should also help you:
 
 ## 涉及技术
 
-后端详细版本号请查看文件build.gradle
+后端依赖详细版本号请查看文件build.gradle
 
 - java 1.8
 - gradle
@@ -59,3 +61,4 @@ These additional references should also help you:
 - shiro
 - mybatis
 - mysql 8.0.23
+- JSR 303
