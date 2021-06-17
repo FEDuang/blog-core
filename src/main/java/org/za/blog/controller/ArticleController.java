@@ -3,8 +3,8 @@ package org.za.blog.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.za.blog.consts.ServerResponse;
-import org.za.blog.dto.ListArticleParam;
-import org.za.blog.dto.SaveArticleParam;
+import org.za.blog.entity.dto.ListArticleParam;
+import org.za.blog.entity.dto.SaveArticleParam;
 import org.za.blog.entity.Article;
 import org.za.blog.service.IArticleService;
 
@@ -40,17 +40,6 @@ public class ArticleController {
     public Object listArticle(@RequestBody ListArticleParam listArticleParam) {
         return ServerResponse.Success(articleService.GetArticles(listArticleParam.getPageSize(), listArticleParam.getPageNum()));
     }
-
-//    /**
-//     * 查询一个文章的内容(md文件)
-//     *
-//     * @param articleId
-//     * @return
-//     */
-//    @PostMapping("getArticleDetail")
-//    public Object getArticleDetail(String articleId) {
-//        return ServerResponse.Success(articleService.GetArticle(articleId));
-//    }
 
     /**
      * 新建一个文章
