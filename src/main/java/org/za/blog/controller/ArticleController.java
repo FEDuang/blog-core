@@ -3,6 +3,7 @@ package org.za.blog.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.za.blog.consts.ServerResponse;
+import org.za.blog.dto.GetArticleContextParam;
 import org.za.blog.entity.dto.ListArticleParam;
 import org.za.blog.entity.dto.SaveArticleParam;
 import org.za.blog.entity.Article;
