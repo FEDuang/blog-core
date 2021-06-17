@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class SaveArticleParam {
-    private String articleID;
+    private String articleId;
     private String articleTitle;
     private String articlePreview;
     private String context;

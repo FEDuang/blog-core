@@ -2,6 +2,7 @@ package org.za.blog.service.impl;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IORuntimeException;
+import cn.hutool.core.io.file.FileReader;
 import cn.hutool.core.io.file.FileWriter;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,14 @@ public class ArticleImpl implements IArticleService {
     public Article GetArticle(String articleId) {
         return articleDao.find(articleId);
     }
+
+    @Override
+    public String GetArticleContext(String articleId) {
+        String fileName = getFileName(articleId);
+        FileReader fileReader = new FileReader(new File(fileName));
+        return fileReader.readString();
+    }
+
 
     @Override
     public PageResult<Article> GetArticles(int limit, int page) {

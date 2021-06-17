@@ -17,4 +17,6 @@ public interface IArticleService {
      * @return True 只有同时删除文件和数据库数据，否则，False
      */
     boolean DeleteArticle(String articleIds);
+
+    String GetArticleContext(String articleId);
 }
