@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.za.blog.dao.URTableMapper">
-  <resultMap id="BaseResultMap" type="org.za.blog.entity.URTable">
-    <id column="urid" jdbcType="INTEGER" property="urid" />
-    <result column="rid" jdbcType="VARCHAR" property="rid" />
-    <result column="uid" jdbcType="INTEGER" property="uid" />
+<mapper namespace="org.za.blog.dao.ArticleTagMapper">
+  <resultMap id="BaseResultMap" type="org.za.blog.entity.ArticleTag">
+    <id column="tag_id" jdbcType="INTEGER" property="tagId" />
+    <result column="tag_name" jdbcType="VARCHAR" property="tagName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    urid, rid, uid
+    tag_id, tag_name
   </sql>
-  <select id="selectByExample" parameterType="org.za.blog.entity.examples.URTableExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="org.za.blog.entity.examples.ArticleTagExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from urtable
+    from ArticleTag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +83,56 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from urtable
-    where urid = #{urid,jdbcType=INTEGER}
+    from ArticleTag
+    where tag_id = #{tagId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from urtable
-    where urid = #{urid,jdbcType=INTEGER}
+    delete from ArticleTag
+    where tag_id = #{tagId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="org.za.blog.entity.examples.URTableExample">
-    delete from urtable
+  <delete id="deleteByExample" parameterType="org.za.blog.entity.examples.ArticleTagExample">
+    delete from ArticleTag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="org.za.blog.entity.URTable">
-    insert into urtable (urid, rid, uid
-      )
-    values (#{urid,jdbcType=INTEGER}, #{rid,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="org.za.blog.entity.ArticleTag">
+    insert into ArticleTag (tag_id, tag_name)
+    values (#{tagId,jdbcType=INTEGER}, #{tagName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.za.blog.entity.URTable">
-    insert into urtable
+  <insert id="insertSelective" parameterType="org.za.blog.entity.ArticleTag">
+    insert into ArticleTag
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="urid != null">
-        urid,
+      <if test="tagId != null">
+        tag_id,
       </if>
-      <if test="rid != null">
-        rid,
-      </if>
-      <if test="uid != null">
-        uid,
+      <if test="tagName != null">
+        tag_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="urid != null">
-        #{urid,jdbcType=INTEGER},
+      <if test="tagId != null">
+        #{tagId,jdbcType=INTEGER},
       </if>
-      <if test="rid != null">
-        #{rid,jdbcType=VARCHAR},
-      </if>
-      <if test="uid != null">
-        #{uid,jdbcType=INTEGER},
+      <if test="tagName != null">
+        #{tagName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="org.za.blog.entity.examples.URTableExample" resultType="java.lang.Long">
-    select count(*) from urtable
+  <select id="countByExample" parameterType="org.za.blog.entity.examples.ArticleTagExample" resultType="java.lang.Long">
+    select count(*) from ArticleTag
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update urtable
+    update ArticleTag
     <set>
-      <if test="record.urid != null">
-        urid = #{record.urid,jdbcType=INTEGER},
+      <if test="record.tagId != null">
+        tag_id = #{record.tagId,jdbcType=INTEGER},
       </if>
-      <if test="record.rid != null">
-        rid = #{record.rid,jdbcType=VARCHAR},
-      </if>
-      <if test="record.uid != null">
-        uid = #{record.uid,jdbcType=INTEGER},
+      <if test="record.tagName != null">
+        tag_name = #{record.tagName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -152,30 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update urtable
-    set urid = #{record.urid,jdbcType=INTEGER},
-      rid = #{record.rid,jdbcType=VARCHAR},
-      uid = #{record.uid,jdbcType=INTEGER}
+    update ArticleTag
+    set tag_id = #{record.tagId,jdbcType=INTEGER},
+      tag_name = #{record.tagName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="org.za.blog.entity.URTable">
-    update urtable
+  <update id="updateByPrimaryKeySelective" parameterType="org.za.blog.entity.ArticleTag">
+    update ArticleTag
     <set>
-      <if test="rid != null">
-        rid = #{rid,jdbcType=VARCHAR},
-      </if>
-      <if test="uid != null">
-        uid = #{uid,jdbcType=INTEGER},
+      <if test="tagName != null">
+        tag_name = #{tagName,jdbcType=VARCHAR},
       </if>
     </set>
-    where urid = #{urid,jdbcType=INTEGER}
+    where tag_id = #{tagId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.za.blog.entity.URTable">
-    update urtable
-    set rid = #{rid,jdbcType=VARCHAR},
-      uid = #{uid,jdbcType=INTEGER}
-    where urid = #{urid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="org.za.blog.entity.ArticleTag">
+    update ArticleTag
+    set tag_name = #{tagName,jdbcType=VARCHAR}
+    where tag_id = #{tagId,jdbcType=INTEGER}
   </update>
 </mapper>
